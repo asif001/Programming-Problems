@@ -16,6 +16,7 @@ public:
             }else if(idxToNumber[numToFind] != i){
                 res[0] = i;
                 res[1] = idxToNumber[numToFind];
+                break;
             }
         }
         
