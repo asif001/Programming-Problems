@@ -13,3 +13,19 @@ public:
         return sum;
     }
 };
+
+// Solution without overflow
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int res = (int)nums.size();
+        
+        for(int i = 0;i < (int)nums.size();i++){
+            res = res ^ i;
+            res = res ^ nums[i];
+        }
+        
+        return res;
+    }
+};
