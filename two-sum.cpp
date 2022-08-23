@@ -3,19 +3,19 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        map<int, int> idxToNumber;
+        map<int, int> numberToidx;
         vector<int> res(2, -1);
         
         for(int i = 0;i < (int)nums.size();i++){
             int numToFind = target - nums[i];
             
-            auto it = idxToNumber.find(numToFind);
+            auto it = numberToidx.find(numToFind);
             
-            if(it == idxToNumber.end()){
-                idxToNumber[nums[i]] = i;
+            if(it == numberToidx.end()){
+                numberToidx[nums[i]] = i;
             }else{
                 res[0] = i;
-                res[1] = idxToNumber[numToFind];
+                res[1] = numberToidx[numToFind];
                 break;
             }
         }
