@@ -13,7 +13,7 @@ public:
             
             if(it == idxToNumber.end()){
                 idxToNumber[nums[i]] = i;
-            }else if(idxToNumber[numToFind] != i){
+            }else{
                 res[0] = i;
                 res[1] = idxToNumber[numToFind];
                 break;
