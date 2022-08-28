@@ -55,11 +55,14 @@ public:
         
         while(i < n){
             if(s[i] == s[j]){
-                lps[i++] = ++j;
-            }else if(j == 0){
-                i++;
-            }else{
+                lps[i] = j + 1;
+                i = i + 1;
+                j = j + 1;
+            }else if(j != 0){
                 j = lps[j-1];
+            }else{
+                lps[i] = 0;
+                i = i + 1;
             }
         }
         
