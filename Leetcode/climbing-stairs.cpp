@@ -1,6 +1,6 @@
 // Problem: https://leetcode.com/problems/climbing-stairs/
 
-// Recursive
+// Recursive dp
 
 class Solution {
 public:
@@ -25,7 +25,7 @@ public:
     }
 };
 
-// Iterative
+// Iterative dp
 
 class Solution {
 public:
@@ -40,5 +40,23 @@ public:
         }
 
         return dp[n];
+    }
+};
+
+// Fibonocci
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        int firstNumber = 1;
+        int secondNumber = 1;
+        
+        for(int i = 2; i <= n; i++){
+            int tempNumber = secondNumber;
+            secondNumber = firstNumber + secondNumber;
+            firstNumber = tempNumber;
+        }
+        
+        return secondNumber;
     }
 };
