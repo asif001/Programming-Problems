@@ -18,20 +18,16 @@ public:
             return false;
         }
         
-        if(root->left == nullptr && root->right == nullptr){
-            return targetSum == root->val;
-        }
-        
-        if(root->left != nullptr){
-            if(hasPathSum(root->left, targetSum-root->val)){
-                return true;
-            }
+        if(root->left != nullptr && hasPathSum(root->left, targetSum-root->val)){
+            return true;
         } 
         
-        if(root->right != nullptr){
-            if(hasPathSum(root->right, targetSum-root->val)){
-                return true;
-            }
+        if(root->right != nullptr && hasPathSum(root->right, targetSum-root->val)){
+            return true;
+        }
+        
+        if(root->left == nullptr && root->right == nullptr){
+            return targetSum == root->val;
         }
         
         return false;
