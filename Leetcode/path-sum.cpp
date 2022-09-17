@@ -36,12 +36,6 @@ public:
         if(root == nullptr){
             return false;
         }
-                
-        if(root->left == nullptr && root->right != nullptr){
-            return hasPathSumRecursive(root->right, targetSum-root->val);
-        }else if(root->right == nullptr && root->left != nullptr){
-            return hasPathSumRecursive(root->left, targetSum-root->val);
-        }
         
         return hasPathSumRecursive(root, targetSum);
     }
