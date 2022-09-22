@@ -125,8 +125,8 @@ public:
     bool validPath(int n, vector<vector<int>>& edges, int start, int end) {
         UnionFind uf(n);
         
-        for(vector<int> edge : edges){
-            uf.union_set(edge[0], edge[1]);
+        for(int i = 0;i < edges.size();i++){
+            uf.union_set(edges[i][0], edges[i][1]);
         }
         
         return uf.find_set(start) == uf.find_set(end);
