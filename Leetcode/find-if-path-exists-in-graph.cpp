@@ -71,3 +71,64 @@ public:
 
 // Union find
 
+class UnionFind{
+private:
+    int* parent;
+    int* rank;
+    int n;
+public:
+    UnionFind(int n){
+        this->n = n;
+        parent = new int[n];
+        rank = new int[n];
+        init();
+    }
+    
+    void init(){
+        for(int v = 0;v < n;v++){
+            make_set(v);
+        }
+    }
+    
+    void make_set(int v){
+        parent[v] = v;
+        rank[v] = 0;
+    }
+    
+    int find_set(int v){
+        if(v == parent[v]){
+            return v;
+        }
+        
+        return parent[v] = find_set(parent[v]);
+    }
+    
+    void union_set(int a, int b){
+        int u = find_set(a);
+        int v = find_set(b);
+        
+        if(u != v){
+            if(rank[u] < rank[v]){
+                swap(u,v);
+            }
+            
+            parent[v] = u;
+            if(rank[u] == rank[v]){
+                rank[u]++;
+            }
+        }
+    }
+};
+
+class Solution {
+public:
+    bool validPath(int n, vector<vector<int>>& edges, int start, int end) {
+        UnionFind uf(n);
+        
+        for(vector<int> edge : edges){
+            uf.union_set(edge[0], edge[1]);
+        }
+        
+        return uf.find_set(start) == uf.find_set(end);
+    }
+};
