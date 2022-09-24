@@ -7,7 +7,7 @@ public:
             return 0;
         }
         
-        if(dp[l][r] != -1){
+        if(dp[l][r] != 0){
             return dp[l][r];
         }
         
@@ -27,7 +27,7 @@ public:
         nums.push_back(1);
         nums.insert(nums.begin(),1);
         
-        vector<vector<int>> dp((int)nums.size(), vector<int>((int)nums.size(), -1));
+        vector<vector<int>> dp((int)nums.size(), vector<int>((int)nums.size(), 0));
         
         return burstBallons(dp, nums, 1, (int)nums.size()-2);
         
