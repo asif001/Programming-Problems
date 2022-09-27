@@ -4,23 +4,23 @@
 #include <vector>
 using namespace std;
 
-int knapSack(vector<int>& v, vector<int>& w, vector<vector<int>>& dp, int n, int itemNo, int c){
-	if(itemNo == n){
-		return dp[itemNo][c] = 0;
+int knapSack(vector<int>& v, vector<int>& w, vector<vector<int>>& dp, int i, int c){
+	if(i < 0){
+		return 0;
 	}
 
-	if(dp[itemNo][c] != -1){
-		return dp[itemNo][c];
+	if(dp[i][c] != -1){
+		return dp[i][c];
 	}
 
 	int value1 = 0, value2 = 0;
-	if(w[itemNo] <= c){
-		value1 = v[itemNo] + knapSack(v, w, dp, n, itemNo + 1, c - w[itemNo]);
+	if(w[i] <= c){
+		value1 = v[i] + knapSack(v, w, dp, i-1, c - w[i]);
 	}
 
-	value2 = knapSack(v, w, dp, n, itemNo + 1, c);
+	value2 = knapSack(v, w, dp, i-1, c);
 
-	return dp[itemNo][c] = max(value1, value2);
+	return dp[i][c] = max(value1, value2);
 }
 
 
@@ -40,7 +40,7 @@ int main() {
 
 	vector<vector<int>> dp(n+1, vector<int>(c+1, -1));
 
-	cout << knapSack(v, w, dp, n, 0, c) << endl;
+	cout << knapSack(v, w, dp, n-1, c) << endl;
 
 	return 0;
 }
