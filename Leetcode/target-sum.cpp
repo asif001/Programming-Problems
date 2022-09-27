@@ -36,27 +36,28 @@ public:
 
 class Solution {
 public:
-    int findWays(vector<int>& nums, int (&dp)[20][1001], int n, int currIndex, int target){
-        if(n == currIndex){
+    int findWays(vector<int>& nums, int (&dp)[20][1001], int i, int target){
+        if(i < 0){
             return target == 0 ? 1 : 0;
         }
         
-        if(dp[currIndex][target] != -1){
-            return dp[currIndex][target];
+        if(dp[i][target] != -1){
+            return dp[i][target];
         }
         
         int res1 = 0, res2 = 0;
-        if(nums[currIndex] <= target){
-            res1 = findWays(nums, dp, n, currIndex+1, target-nums[currIndex]);
+        if(nums[i] <= target){
+            res1 = findWays(nums, dp, i-1, target-nums[i]);
         }
         
-        res2 = findWays(nums, dp, n, currIndex+1, target);
+        res2 = findWays(nums, dp, i-1, target);
 
-        return dp[currIndex][target] = res1+res2;
+        return dp[i][target] = res1+res2;
     }
     
     int findTargetSumWays(vector<int>& nums, int target) {
         int dp[20][1001];
+        int n = (int)nums.size();
         
         for(int i = 0;i < 20;i++){
             for(int j = 0;j < 1001;j++){
@@ -70,6 +71,6 @@ public:
             return 0;
         }
         
-        return findWays(nums, dp, (int)nums.size(), 0, (target+sum)/2);
+        return findWays(nums, dp, n-1, (target+sum)/2);
     }
 };
