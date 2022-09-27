@@ -45,8 +45,9 @@ public:
         }
         
         int res1 = 0, res2 = 0;
-        if(nums[currIndex] <= target)
-        res1 = findWays(nums, dp, n, currIndex+1, target-nums[currIndex]);
+        if(nums[currIndex] <= target){
+            res1 = findWays(nums, dp, n, currIndex+1, target-nums[currIndex]);
+        }
         
         res2 = findWays(nums, dp, n, currIndex+1, target);
 
@@ -63,12 +64,11 @@ public:
         }
         
         int sum = accumulate(nums.begin(), nums.end(), 0);
-        target = target+sum;
         
-        if(target < 0 || sum < 0 || target%2 == 1){
+        if(sum < 0 || target + sum < 0 || (target+sum)%2 == 1){
             return 0;
         }
         
-        return findWays(nums, dp, (int)nums.size(), 0, target>>1);
+        return findWays(nums, dp, (int)nums.size(), 0, (target+sum)/2);
     }
 };
