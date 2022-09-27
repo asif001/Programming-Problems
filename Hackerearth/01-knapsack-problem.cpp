@@ -5,8 +5,8 @@
 using namespace std;
 
 int knapSack(vector<int>& v, vector<int>& w, vector<vector<int>>& dp, int i, int c){
-	if(i < 0){
-		return 0;
+	if(i == 0){
+		return w[0] <= c ? v[0] : 0;
 	}
 
 	if(dp[i][c] != 0){
