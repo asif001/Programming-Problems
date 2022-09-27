@@ -4,8 +4,8 @@
 class Solution {
 public:
     int findWays(vector<int>& nums, int (&dp)[20][2001], int i, int target){
-        if(i < 0){
-            return target == 0 ? 1 : 0;
+        if(i == 0){
+            return (target - nums[0] == 0 ? 1 : 0) + (target + nums[0] == 0 ? 1 : 0);
         }
         
         if(dp[i][target] != -1){
@@ -33,12 +33,12 @@ public:
 };
 
 //O(n*1001)
-
 class Solution {
 public:
     int findWays(vector<int>& nums, int (&dp)[20][1001], int i, int target){
-        if(i < 0){
-            return target == 0 ? 1 : 0;
+        if(i == 0){
+            
+            return (target == 0 && nums[0] != 0 ? 1 : 0) + (target == nums[0] ? 1 : 0) + (target == -1*nums[0] ? 1 : 0);
         }
         
         if(dp[i][target] != -1){
