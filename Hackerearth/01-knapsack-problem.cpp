@@ -9,7 +9,7 @@ int knapSack(vector<int>& v, vector<int>& w, vector<vector<int>>& dp, int i, int
 		return 0;
 	}
 
-	if(dp[i][c] != -1){
+	if(dp[i][c] != 0){
 		return dp[i][c];
 	}
 
@@ -38,7 +38,7 @@ int main() {
 		cin >> w[i];
 	}
 
-	vector<vector<int>> dp(n+1, vector<int>(c+1, -1));
+	vector<vector<int>> dp(n+1, vector<int>(c+1, 0));
 
 	cout << knapSack(v, w, dp, n-1, c) << endl;
 
