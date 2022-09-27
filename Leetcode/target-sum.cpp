@@ -13,9 +13,9 @@ public:
         }
         
         int res1 = findWays(nums, dp, i-1, target-nums[i] >= 0 ? target-nums[i] : nums[i]-target);
-        int res2 = findWays(nums, dp, i-1, target+nums[i]);
+        int res2 = findWays(nums, dp, i-1, target+nums[i] >= 0 ? target+nums[i] : -1*(target+nums[i]));
 
-        return dp[i][target] = res1+res2;
+        return dp[i][target] = res1 + res2;
     }
     
     int findTargetSumWays(vector<int>& nums, int target) {
