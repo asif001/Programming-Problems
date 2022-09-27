@@ -3,11 +3,11 @@
 class Solution {
 public:
     int burstBallons(vector<vector<int>>& dp, vector<int>& nums, int l, int r){
-        if(l > r){
-            return 0;
+        if(l == r){
+            return nums[l-1]*nums[l]*nums[r+1];
         }
         
-        if(dp[l][r] != 0){
+        if(dp[l][r] != -1){
             return dp[l][r];
         }
         
@@ -27,7 +27,7 @@ public:
         nums.push_back(1);
         nums.insert(nums.begin(),1);
         
-        vector<vector<int>> dp((int)nums.size(), vector<int>((int)nums.size(), 0));
+        vector<vector<int>> dp((int)nums.size(), vector<int>((int)nums.size(), -1));
         
         return burstBallons(dp, nums, 1, (int)nums.size()-2);
         
