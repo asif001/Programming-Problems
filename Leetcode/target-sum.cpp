@@ -1,5 +1,6 @@
 // Problem: https://leetcode.com/problems/target-sum/
 
+// O(n*2001)
 class Solution {
 public:
     int findWays(vector<int>& nums, int (&dp)[20][2001], int n, int currIndex, int target){
