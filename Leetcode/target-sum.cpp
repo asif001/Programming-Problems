@@ -3,23 +3,24 @@
 // O(n*2001)
 class Solution {
 public:
-    int findWays(vector<int>& nums, int (&dp)[20][2001], int n, int currIndex, int target){
-        if(n == currIndex){
+    int findWays(vector<int>& nums, int (&dp)[20][2001], int i, int target){
+        if(i < 0){
             return target == 0 ? 1 : 0;
         }
         
-        if(dp[currIndex][target] != -1){
-            return dp[currIndex][target];
+        if(dp[i][target] != -1){
+            return dp[i][target];
         }
         
-        int res1 = findWays(nums, dp, n, currIndex+1, target-nums[currIndex] >= 0 ? target-nums[currIndex] : nums[currIndex]-target);
-        int res2 = findWays(nums, dp, n, currIndex+1, target+nums[currIndex]);
+        int res1 = findWays(nums, dp, i-1, target-nums[i] >= 0 ? target-nums[i] : nums[i]-target);
+        int res2 = findWays(nums, dp, i-1, target+nums[i]);
 
-        return dp[currIndex][target] = res1+res2;
+        return dp[i][target] = res1+res2;
     }
     
     int findTargetSumWays(vector<int>& nums, int target) {
         int dp[20][2001];
+        int n = (int)nums.size();
         
         for(int i = 0;i < 20;i++){
             for(int j = 0;j < 2001;j++){
@@ -27,7 +28,7 @@ public:
             }
         }
         
-        return findWays(nums, dp, (int)nums.size(), 0, target >= 0 ? target : -1*target);
+        return findWays(nums, dp, n-1, target >= 0 ? target : -1*target);
     }
 };
 
