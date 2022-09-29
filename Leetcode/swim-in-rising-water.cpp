@@ -1,5 +1,6 @@
 // Problem: https://leetcode.com/problems/swim-in-rising-water/
 
+// UnionFind - O(n*n)
 class UnionFind{
 private:
     int* parent;
