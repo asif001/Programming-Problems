@@ -61,3 +61,7 @@
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode
+main.ilk
+main.pdb
+vc140.pdb
+.vscode/tasks.json
