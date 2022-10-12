@@ -4,7 +4,7 @@ class Solution {
 public:
     int burstBallons(vector<vector<int>>& dp, vector<int>& nums, int l, int r){
         if(l == r){
-            return nums[l-1]*nums[l]*nums[r+1];
+            return dp[l][r] = nums[l-1]*nums[l]*nums[r+1];
         }
         
         if(dp[l][r] != -1){
