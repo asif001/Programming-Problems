@@ -5,7 +5,7 @@ class Solution {
 public:
     int findWays(vector<int>& nums, int (&dp)[20][2001], int i, int target){
         if(i == 0){
-            return (target - nums[0] == 0 ? 1 : 0) + (target + nums[0] == 0 ? 1 : 0);
+            return dp[i][target] = (target - nums[0] == 0 ? 1 : 0) + (target + nums[0] == 0 ? 1 : 0);
         }
         
         if(dp[i][target] != -1){
@@ -37,7 +37,7 @@ class Solution {
 public:
     int findWays(vector<int>& nums, int (&dp)[20][1001], int i, int target){
         if(i == 0){
-            return (target == 0 ? 1 : 0) + (target == nums[0] ? 1 : 0);
+            return dp[i][target] = (target == 0 ? 1 : 0) + (target == nums[0] ? 1 : 0);
         }
         
         if(dp[i][target] != -1){
@@ -45,7 +45,7 @@ public:
         }
         
         int res1 = 0, res2 = 0;
-        if(nums[i] <= target){
+        if(target >= nums[i]){
             res1 = findWays(nums, dp, i-1, target-nums[i]);
         }
         
